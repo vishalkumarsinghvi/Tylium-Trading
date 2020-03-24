@@ -1,3 +1,4 @@
 <resources>
   <string name="app_name">Tylium Trading</string>
+    <string name="iv_splash">iv_splash</string>
 </resources>
