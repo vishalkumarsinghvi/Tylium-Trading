@@ -2,7 +2,7 @@ package com.android.tyliumtrading.model;
 import com.google.gson.annotations.SerializedName;
 import java.io.Serializable;
 
-public class SubData implements Serializable {
+public class SubTradingData implements Serializable {
     @SerializedName("symbol")
     private String symbol;
 
@@ -24,17 +24,32 @@ public class SubData implements Serializable {
     @SerializedName("timestamp")
     private String timestamp;
 
-    @SerializedName("id")
-    private String id;
+    public String getSymbol() {
+        return symbol;
+    }
 
-    @SerializedName("name")
-    private String name;
+    public String getBid() {
+        return bid;
+    }
 
-    @SerializedName("assetClass")
-    private String assetClass;
+    public String getAsk() {
+        return ask;
+    }
 
-    @SerializedName("canonical_symbol")
-    private String canonical_symbol;
+    public String getBidq() {
+        return bidq;
+    }
 
+    public String getAskq() {
+        return askq;
+    }
+
+    public String getOpen() {
+        return open;
+    }
+
+    public String getTimestamp() {
+        return timestamp;
+    }
 }
 

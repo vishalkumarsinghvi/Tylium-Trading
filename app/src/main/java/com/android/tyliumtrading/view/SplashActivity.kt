@@ -6,8 +6,8 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.android.tyliumtrading.R
 import com.android.tyliumtrading.model.GetData
-import com.android.tyliumtrading.model.TradingData
 import com.google.gson.Gson
+import com.google.gson.JsonObject
 import kotlinx.android.synthetic.main.activity_splash.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -30,19 +30,20 @@ class SplashActivity : AppCompatActivity() {
             .build()
 
         val call = retrofit.create(GetData::class.java)
-        call.getData().enqueue(object : Callback<TradingData> {
-            override fun onResponse(call: Call<TradingData>, response: Response<TradingData>) {
+        call.getData().enqueue(object : Callback<JsonObject> {
+            override fun onResponse(call: Call<JsonObject>, response: Response<JsonObject>) {
                 if (response.code() == 200) {
                     val intent = Intent(this@SplashActivity, HomeActivity::class.java)
                     val b = Bundle()
                     b.putString("data", Gson().toJson(response.body()))
                     intent.putExtras(b)
                     startActivity(intent)
+                    finish()
                 }
                 hideProgress()
             }
 
-            override fun onFailure(call: Call<TradingData>, t: Throwable) {
+            override fun onFailure(call: Call<JsonObject>, t: Throwable) {
                 hideProgress()
             }
         })
